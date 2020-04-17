@@ -1,4 +1,12 @@
 # convert period type
+
+def estimator(data):
+
+    impact = solve(data, 10)
+    severeImpact = solve(data, 50)
+
+    return {"data": data, "impact": impact, "severeImpact": severeImpact}
+
 def nomilise(timeToElapse, periodType):
     period = 1
     if periodType == "days":
@@ -8,13 +16,6 @@ def nomilise(timeToElapse, periodType):
     elif periodType == "months":
         period = int(timeToElapse * 30)
     return int(period)
-
-def estimator(data):
-
-    impact = solve(data, 10)
-    severeImpact = solve(data, 50)
-
-    return {"data": data, "impact": impact, "severeImpact": severeImpact}
 
 def solve(data, multiplier):
     days = nomilise(data['timeToElapse'], data['periodType'])
@@ -41,4 +42,3 @@ def solve(data, multiplier):
             "casesForVentilatorsByRequestedTime": casesForVentilatorsByRequestedTime, \
             "dollarsInFlight": dollarsInFlight
     }
-
